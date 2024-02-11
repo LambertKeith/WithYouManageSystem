@@ -1,34 +1,32 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 from login.models import Teacher
 from django.contrib.auth.hashers import make_password
 
 
-def create_user():
-    '''
-    新建示例用户
-    '''
-    # 创建一个新用户
-    new_teacher = Teacher.objects.create_user(
-        username='example_user',
-        password='your_password',
-        email='example@email.com',
-        teacher_id='1234567890',
-        classroom='101',
-        is_admin=False
-    )
 
-
-def check_user(request):
-    '''
-    检测示例用户密码
-    '''
-    user = authenticate(username='example_user', password='your_password')
-    if user is not None:
-        login(request, user)
-        # 用户认证成功，继续后续流程
-        return HttpResponse("success")
+def user_login(request):
+    """用户登录
+    """    
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return render(request, "index.html")
+        else:
+            return HttpResponse("Invalid login.")
     else:
-        return HttpResponse("fail")
-        # 认证失败
+        # 显示登录表单
+        return render(request, "login.html")
+
+
+def user_logout(request):
+    """用户退出登录
+    """    
+    logout(request)
+    # 重定向到登录表单
+    return HttpResponseRedirect('/account/login/')

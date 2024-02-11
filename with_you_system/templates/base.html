@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WithYou</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+    <style>
+        .navbar-right {
+            margin-right: 0;
+        }
+        .container, .navbar-header {
+            text-align: center;
+        }
+        .navbar-header {
+            float: none;
+        }
+        .navbar {
+            justify-content: space-between;
+        }
+        .navbar-nav {
+            float: none;
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <h1 class="navbar-brand">WithYou</h1>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/account/logout/">退出登录</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {% block content %}
+            <!-- 子模板的内容将在这里插入 -->
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

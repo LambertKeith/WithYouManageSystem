@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-2sa=$d7gktazo5uw83rps66(29@^)cg-bo(q-2b!szs(gcy53x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.10.196']
 
 AUTH_USER_MODEL = 'login.Teacher'
 # Application definition
@@ -49,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = "with_you_system.urls"
@@ -56,7 +57,7 @@ ROOT_URLCONF = "with_you_system.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "login/templates")],
+        "DIRS": [os.path.join(BASE_DIR, "login/templates"), os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -111,9 +112,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = 'zh-hans'  # 设置语言为简体中文
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'Asia/Shanghai'  # 设置时区为上海
 
 USE_I18N = True
 
