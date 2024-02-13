@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 from login.models import Teacher
 from django.contrib.auth.hashers import make_password
-
+from django.contrib.auth.middleware import AuthenticationMiddleware
 
 
 def user_login(request):
