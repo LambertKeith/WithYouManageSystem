@@ -16,10 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-import login, kitchen
+from . import views
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", include("login.urls")),
-    path("", include("myadmin.urls"))
+    path("admin/kitchen/", views.kitchen_manage, name='kitchen'),
 ]

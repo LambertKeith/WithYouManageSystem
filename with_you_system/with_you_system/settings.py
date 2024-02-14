@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "login.apps.LoginConfig"
+    "login.apps.LoginConfig",
+    "kitchen.apps.KitchenConfig",
+    "myadmin.apps.MyadminConfig"
 ]
 
 MIDDLEWARE = [
@@ -58,7 +60,8 @@ ROOT_URLCONF = "with_you_system.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "login/templates"), os.path.join(BASE_DIR, "templates")],
+        "DIRS": [os.path.join(BASE_DIR, "login/templates"), os.path.join(BASE_DIR, "templates"), 
+                os.path.join(BASE_DIR, "templates/admin") ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -134,4 +137,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # 不需要登录验证的地址
-AUTHENTICATION_EXCLUDED_PATHS = ["/", "/account/login/"]
+AUTHENTICATION_EXCLUDED_PATHS = ["/", "/account/login/", "/myadmin/login/", "admin/"]

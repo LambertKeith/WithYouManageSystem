@@ -1,0 +1,15 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+/* 自定义样式可以在这里添加 */
+</style>
+{% endblock %}
+
+{% block content %}
+{{ block.super }}
+<div>
+    <a href="{% url 'my_custom_view' %}" class="button">自定义按钮</a>
+</div>
+{% endblock %}

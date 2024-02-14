@@ -1,29 +1,23 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
+# Create your views here.
+
+def myadmin(request):
+
+    return HttpResponse("myadmin")
 
 
+def myadmin_login(request):
 
-def user_login(request):
-    """用户登录
-    """    
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request, "index.html")
+            return render(request, "myadmin.html", {"user": username})
         else:
             return HttpResponse("Invalid login.")
     else:
         # 显示登录表单
-        return render(request, "login.html")
-
-
-def user_logout(request):
-    """用户退出登录
-    """    
-    logout(request)
-    # 重定向到登录表单
-    return HttpResponseRedirect('/account/login/')
+        return render(request, "myadmin_login.html")    
