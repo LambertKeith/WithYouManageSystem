@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 
 class AuthenticationMiddleware:
+    
     def __init__(self, get_response):
         self.get_response = get_response
 
